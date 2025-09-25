@@ -23,7 +23,7 @@ void Report_Card(string Names[], double Averages[], int Number_of_Students);
 
 int main()
 {
-    ifstream file("grades.txt");
+    ifstream file("StudentGrades.txt");
 
     if (!file) {
         cout << "Error! Unable to open file.\n";
@@ -45,9 +45,7 @@ int main()
 int ReadFile(ifstream& file, string Names[], int Scores[][Test_Amount]){
     int Student_Count = 0;
 
-    while (file && Student_Count < Max_Students) {
-        file >> Names[Student_Count];
-
+    while (Student_Count < Max_Students && file >> Names[Student_Count]) {
         for (int i = 0; i < Test_Amount; i++) {
             file >> Scores[Student_Count][i];
         }
@@ -62,7 +60,7 @@ void Calculate_Average_Score(int Scores[][Test_Amount], double Averages[], int N
     for (int i = 0; i < Number_of_Students; i++) {
         int Sum = 0;
         
-        for (int a = 0; a << Test_Amount; a++) {
+        for (int a = 0; a < Test_Amount; a++) {
             Sum += Scores[i][a];
         }
         Averages[i] = static_cast<double>(Sum) / Test_Amount;
@@ -80,5 +78,13 @@ char Letter_Grade_Average(double Single_Average) {
 void Report_Card(string Names[], double Averages[], int Number_of_Students) {
     cout << "Student Name      Average   Grade\n";
     cout << "--------------------------------\n";
+
+
+    
+    for (int i = 0; i < Number_of_Students; i++){
+            char Grade = Letter_Grade_Average(Averages[i]);
+    
+            cout << left << setw(18) << Names[i] << setw(10) << fixed << setprecision(2) << Averages[i] << " " << Grade << endl;
+    }
 }
 
