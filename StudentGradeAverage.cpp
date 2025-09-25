@@ -14,6 +14,13 @@ using namespace std;
 const int Test_Amount = 5;
 const int Max_Students = 100;
 
+//Function Prototypes
+int ReadFile(ifstream& file, string Names[], int Scores[][Test_Amount]);
+void Calculate_Average_Score(int Scores[][Test_Amount], double Averages[], int Number_of_Students[]);
+char Letter_Grade_Average(double Single_Average[]);
+void Report_Card(string Names[], double Averages[], int Number_of_Students[]);
+
+
 int main()
 {
     ifstream file("grades.txt");
@@ -22,5 +29,21 @@ int main()
         cout << "Error! Unable to open file.\n";
         return 1;
     }
+}
+
+int ReadFile(ifstream& file, string Names[], int Scores[][Test_Amount]){
+
+}
+
+void Calculate_Average_Score(int Scores[][Test_Amount], double Averages[], int Number_of_Students[]) {
+
+}
+
+char Letter_Grade_Average(double Single_Average[]) {
+
+}
+
+void Report_Card(string Names[], double Averages[], int Number_of_Students[]) {
+
 }
 
